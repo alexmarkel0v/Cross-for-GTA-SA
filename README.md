@@ -8,4 +8,6 @@
 
 - Скриншот: https://imgur.com/a/nM0FzSP
 
+- Примечание: он появляется через 5 секунд после спавна.
+
 - Credits: alexmarkel0v
