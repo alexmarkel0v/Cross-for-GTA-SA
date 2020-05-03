@@ -10,12 +10,14 @@ local mainIni = inicfg.load({
       krest = true,
 	  krestX = 500,
 	  krestY = 100,
+	  krestSize = 2,
     }
 }, 'krest.ini')
 
 local krestenable = mainIni.settings.krest
 local x = mainIni.settings.krestX
 local y = mainIni.settings.krestY
+local sizekrest = mainIni.settings.krestSize
 
 local settings = "moonloader/config/krest.ini"
 local settingsIni = inicfg.load(mainIni, settings)
@@ -27,6 +29,7 @@ function main()
 	
 	sampRegisterChatCommand('krest', cmd_enablekrest)
 	sampRegisterChatCommand('krest_pos', cmd_positionkrest)
+	sampRegisterChatCommand('krest_size', cmd_krestsize)
 	
 	isLoaded = loadTextureDictionary('krest')
     if not isLoaded then sampAddChatMessage("[ Крест ]: Файл krest.txd не найден в папке moonloader/resource/txd", -1) return 
@@ -44,7 +47,7 @@ function main()
 		if sprite ~= nil then
 			if krestenable then
 				ScreenX, ScreenY = getScreenResolution()
-				drawSprite(sprite, ScreenX * (x / ScreenX), ScreenY * (y / ScreenY), ScreenX / 25, ScreenY / 10, 255, 255, 255, 255)
+				drawSprite(sprite, ScreenX * (x / ScreenX), ScreenY * (y / ScreenY), ScreenX / (sizekrest * 12.5), ScreenY / (sizekrest * 5), 255, 255, 255, 255)
 			end
 		end
 	end
@@ -65,5 +68,23 @@ function cmd_positionkrest()
 		mainIni.settings.krestX = x
 		mainIni.settings.krestY = y
 		inicfg.save(mainIni, settings)
+		sampAddChatMessage("[ Крест ]: Позиция сохранена.", -1)
 	end)
+end
+
+function cmd_krestsize(param)
+	tonumber(param)
+	if not isNull(param) then
+		if tonumber(param) > 0 or tonumber(param) < 4 then
+			sizekrest = tonumber(param)
+			mainIni.settings.krestSize = sizekrest
+			inicfg.save(mainIni, settings)
+		else sampAddChatMessage('[ Крест ]: Размер креста от 1 (большого) до 3 (маленького).', 0xAFAFAFAA)
+		end
+	else sampAddChatMessage('[ Крест ]: Изменить размер креста: /krest_size [от 1 (большого) до 3 (маленького)]', 0xAFAFAFAA)
+	end
+end
+
+function isNull(x)
+  return not not tostring(x):find("^%s*$")
 end
