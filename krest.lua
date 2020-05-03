@@ -8,8 +8,8 @@ local mainIni = inicfg.load({
     settings =
     {
       krest = true,
-	  krestX = 500,
-	  krestY = 100,
+	  krestX = 608,
+	  krestY = 410,
 	  krestSize = 2,
     }
 }, 'krest.ini')
