@@ -6,4 +6,6 @@
 
 - Требования: CLEO 4.3 (на 4.1 работу не гарантирую), SAMPFUNCS 5.3.3+ (выше поддерживает, ниже не гарантирую), SA-MP 0.3.7 - R1 (ну или R2), MoonLoader 026-5 (на v.027.0-preview3 работает).
 
+- Скриншот: https://imgur.com/a/nM0FzSP
+
 - Credits: alexmarkel0v
