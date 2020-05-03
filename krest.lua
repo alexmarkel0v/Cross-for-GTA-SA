@@ -1,5 +1,5 @@
 script_name("Krest")
-script_version("1.0")
+script_version("1.1")
 script_author("alexmarkel0v")
 
 local inicfg = require 'inicfg'
